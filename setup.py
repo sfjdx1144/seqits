@@ -22,7 +22,7 @@ setup(
     packages=find_packages(),
     install_requires=['argparse','colorama'],
     platforms="any",
-    license="GNU GPLv3 Licence",
+    license="GPL-3.0 license",
     python_requires=">=3.4.0",
     include_package_data=True
 )
