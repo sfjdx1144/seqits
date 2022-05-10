@@ -1,17 +1,19 @@
 import argparse
 from colorama import Fore,init
 init(autoreset=True)
-parser = argparse.ArgumentParser(description="Seqits search tool")
-parser.add_argument('input', 
+def get_help(prog):
+    return argparse.HelpFormatter('seqits.formatseq')
+parser = argparse.ArgumentParser(formatter_class=get_help,description="Seqits: fasta file format")
+parser.add_argument('input',
                     help='input raw fasta file')
-parser.add_argument('-n','--num', 
+parser.add_argument('-n','--num',
                     type=int,
                     default=60,
                     help='number of characters per line')
 parser.add_argument('-o','--out',
                     default='output.fa',
                     help='output file')
-parser.add_argument('-s','--show', 
+parser.add_argument('-s','--show',
                     default='false',
                     help='true/false, show the output on the screen')
 args = parser.parse_args()
@@ -30,7 +32,7 @@ for i in file.split('>')[1:]:
             s+=j.upper()
             n+=1
             if n%args.num==0:
-                s+='\n'        
+                s+='\n'
     if n%args.num!=0:
         s+='\n'
 if args.show=='true':

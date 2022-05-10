@@ -2,7 +2,9 @@ import random
 import argparse
 from colorama import Fore,init
 init(autoreset=True)
-parser = argparse.ArgumentParser(description="Seqits search tool")
+def get_help(prog):
+    return argparse.HelpFormatter('seqits.randseq')
+parser = argparse.ArgumentParser(dformatter_class=get_help,escription="Seqits: generate sequences randomly")
 parser.add_argument('type',
                     help='nucl/prot, cDNS sequence(s) or protein sequence(s)')
 parser.add_argument('num',
@@ -11,7 +13,7 @@ parser.add_argument('num',
 parser.add_argument('-o','--out',
                     default='output.fa',
                     help='output file')
-parser.add_argument('-s','--show', 
+parser.add_argument('-s','--show',
                     default='false',
                     help='true/false, show the output on the screen')
 args = parser.parse_args()

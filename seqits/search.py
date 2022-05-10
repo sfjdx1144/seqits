@@ -1,21 +1,23 @@
 import argparse
 from colorama import Fore,init
 init(autoreset=True)
-parser = argparse.ArgumentParser(description="Seqits search tool")
-parser.add_argument('input', 
+def get_help(prog):
+    return argparse.HelpFormatter('seqits.search')
+parser = argparse.ArgumentParser(formatter_class=get_help,description="Seqits: gene search tool")
+parser.add_argument('input',
                     help='input raw fasta file')
-parser.add_argument('gene', 
+parser.add_argument('gene',
                     help='input gene(s)')
-parser.add_argument('-t','--type', 
+parser.add_argument('-t','--type',
                     default='string',
                     help='string/file, type of input gene(s). For file, one gene one line; for string, gene(s) seperate with \',\'')
-parser.add_argument('-m','--mode', 
+parser.add_argument('-m','--mode',
                     default='fast',
                     help='fast/order, "fast" mode may faster than "order" mode, but "order" mode can show your output accoring to the order your gene(s) input')
 parser.add_argument('-o','--out',
                     default='output.fa',
                     help='output file')
-parser.add_argument('-s','--show', 
+parser.add_argument('-s','--show',
                     default='false',
                     help='true/false, show the output on the screen')
 args = parser.parse_args()
