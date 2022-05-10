@@ -1,8 +1,12 @@
 import argparse
 from colorama import Fore,init
+from seqits import seqits_search_version
+
 init(autoreset=True)
 def get_help(prog):
     return argparse.HelpFormatter('seqits.search')
+def get_version():
+    return 'Seqits: search {}'.format(seqits_search_version)
 parser = argparse.ArgumentParser(formatter_class=get_help,description="Seqits: gene search tool")
 parser.add_argument('input',
                     help='input raw fasta file')
@@ -10,16 +14,18 @@ parser.add_argument('gene',
                     help='input gene(s)')
 parser.add_argument('-t','--type',
                     default='string',
-                    help='string/file, type of input gene(s). For file, one gene one line; for string, gene(s) seperate with \',\'')
+                    help='string/file, type of input gene(s). For file, one gene one line; for string, gene(s) should be seperated with \',\'')
 parser.add_argument('-m','--mode',
                     default='fast',
-                    help='fast/order, "fast" mode may faster than "order" mode, but "order" mode can show your output accoring to the order your gene(s) input')
+                    help='fast/order, "fast" mode may faster than "order" mode, but "order" mode can show your output accoring to the order of input gene(s)')
 parser.add_argument('-o','--out',
                     default='output.fa',
                     help='output file')
 parser.add_argument('-s','--show',
                     default='false',
                     help='true/false, show the output on the screen')
+parser.add_argument('-v', '--version', action='version',
+                   version=get_version(),help='display version')
 args = parser.parse_args()
 filename=args.input
 gene_list=args.gene
@@ -28,8 +34,8 @@ if gene_type=='string':
     gene_list=args.gene.split(',')
 elif gene_type=='file':
     with open(args.gene) as f:
-        gene_list=f.readlines()
-        exit(0)
+        gene_list=f.read()
+    gene_list=gene_list.split('\n')
 else:
     print(Fore.RED+'type of input gene(s) error!')
     exit(0)

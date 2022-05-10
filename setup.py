@@ -2,23 +2,17 @@
 # coding=utf-8
 from setuptools import setup, find_packages
 import os,re
+from seqits import seqits_version
 
 try:
     with open(os.path.join(os.path.abspath(os.path.dirname("__file__")),"README.md")) as f:
         long_description=f.read()
 except:
     long_description="Seqits"
-with open(os.path.join(os.path.abspath(os.path.dirname("__file__")),"seqits/list.txt")) as f:
-    data=f.readlines()
-vs=''
-for i in data:
-    temp=i.split('\t')
-    if temp[0]=='Seqits':
-        vs=temp[1][:-1]
-        break
+
 setup(
     name="seqits",
-    version=vs,
+    version=seqits_version,
     description="Tools for sequences process",
     long_description_content_type="text/markdown",
     long_description=long_description,

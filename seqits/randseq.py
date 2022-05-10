@@ -1,12 +1,16 @@
 import random
 import argparse
 from colorama import Fore,init
+from seqits import seqits_randseq_version
+
 init(autoreset=True)
 def get_help(prog):
     return argparse.HelpFormatter('seqits.randseq')
-parser = argparse.ArgumentParser(dformatter_class=get_help,escription="Seqits: generate sequences randomly")
+def get_version():
+    return 'Seqits: randseq {}'.format(seqits_randseq_version)
+parser = argparse.ArgumentParser(formatter_class=get_help,description="Seqits: generate sequences randomly")
 parser.add_argument('type',
-                    help='nucl/prot, cDNS sequence(s) or protein sequence(s)')
+                    help='nucl/prot, cds or protein sequence(s)')
 parser.add_argument('num',
                     type=int,
                     help='number of sequences(s) to generate')
@@ -16,6 +20,8 @@ parser.add_argument('-o','--out',
 parser.add_argument('-s','--show',
                     default='false',
                     help='true/false, show the output on the screen')
+parser.add_argument('-v', '--version', action='version',
+                   version=get_version(),help='display version')
 args = parser.parse_args()
 s=''
 if args.type=='nucl':

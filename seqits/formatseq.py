@@ -1,8 +1,12 @@
 import argparse
 from colorama import Fore,init
+from seqits import seqits_formatseq_version
+
 init(autoreset=True)
 def get_help(prog):
     return argparse.HelpFormatter('seqits.formatseq')
+def get_version():
+    return 'Seqits: formatseq {}'.format(seqits_formatseq_version)
 parser = argparse.ArgumentParser(formatter_class=get_help,description="Seqits: fasta file format")
 parser.add_argument('input',
                     help='input raw fasta file')
@@ -16,6 +20,9 @@ parser.add_argument('-o','--out',
 parser.add_argument('-s','--show',
                     default='false',
                     help='true/false, show the output on the screen')
+parser.add_argument('-v', '--version', action='version',
+                   version=get_version(),help='display version')
+
 args = parser.parse_args()
 filename=args.input
 print('Waiting for formatting ...')
