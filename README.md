@@ -10,8 +10,8 @@
 
 #### Seqits
 
-`python -m seqits -v # display the version of Seqits`
-`python -m seqits list # display all tools in Seqits`
+`python -m seqits -v # display the version of Seqits`  
+`python -m seqits list # display all tools in Seqits`  
 
 #### randseq
 
@@ -24,7 +24,7 @@ This tool can generate cds or protein sequence(s) randamly.
 | out (optional) | output file, defaut: output.fa                                 |
 | show(optional) | whether display the output on the screen or not, defaut: false |
 
-e.g. 
+e.g.   
 `python -m seqits.randseq nucl 100 -o output.fa -s true`
 
 #### search
@@ -40,9 +40,9 @@ This tool can search and extract  sequence(s) you want by  Gene ID or Gene Name.
 | out (optional)  | output file, defaut: output.fa                                                                                                                                     |
 | show (optional) | whether display output on the screen or not, defaut: false                                                                                                         |
 
-e.g. 
-`python -m seqits.search input.fa Gene1,Gene2,Gene3 --out output.fa`
-`python -m seqits.search input.fa Gene.txt -t file`
+e.g.   
+`python -m seqits.search input.fa Gene1,Gene2,Gene3 --out output.fa`  
+`python -m seqits.search input.fa Gene.txt -t file`  
 
 #### formatseq
 
@@ -55,8 +55,8 @@ This tool can format the fasta file.
 | out (optional)  | output file, defaut: output.fa                             |
 | show (optional) | whether display output on the screen or not, defaut: false |
 
-e.g. 
-`python -m seqits.formatseq input.fa 100`
+e.g.   
+`python -m seqits.formatseq input.fa 100`  
 
 #### retest
 
@@ -67,7 +67,5 @@ This tool can test the regulate expression.
 | input     | input file          |
 | re        | regulate expression |
 
-e.g. 
-`python -m seqits.retest input.fa ">(Gene\d{1,3})"`
-
-
+e.g.   
+`python -m seqits.retest input.fa ">(Gene\d{1,3})"`  
