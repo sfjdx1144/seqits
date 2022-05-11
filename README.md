@@ -24,26 +24,29 @@ This tool can generate cds or protein sequence(s) randamly.
 | out (optional) | output file, defaut: output.fa                                 |
 | show(optional) | whether display the output on the screen or not, defaut: false |
 
-e.g. `python -m seqits.randseq nucl 100 -o output.fa -s true`
+e.g. 
+`python -m seqits.randseq nucl 100 -o output.fa -s true`
 
 #### search
 
 This tool can search and extract  sequence(s) you want by  Gene ID or Gene Name.
 
-| Arguments       | Description                                                                                                                                          |
-| --------------- |:----------------------------------------------------------------------------------------------------------------------------------------------------:|
-| input           | input raw fasta file                                                                                                                                 |
-| gene            | input gene(s)                                                                                                                                        |
-| type (optional) | string/file, type of input gene(s). For file, one gene one line; for string, gene(s) should be seperated with ',', default string                    |
-| mode (optional) | fast/order, "fast" mode may faster than "order" mode, but "order" mode can display your output accoring to the order of input gene(s), default: fast |
-| out (optional)  | output file, defaut: output.fa                                                                                                                       |
-| show (optional) | whether display output on the screen or not, defaut: false                                                                                           |
+| Arguments       | Description                                                                                                                                                        |
+| --------------- |:------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| input           | input raw fasta file                                                                                                                                               |
+| gene            | input gene(s)                                                                                                                                                      |
+| type (optional) | re/string/file, type of input gene(s). re means regulate expression, for file, one gene one line; for string, gene(s) should be seperated with ',', default string |
+| mode (optional) | fast/order, "fast" mode may faster than "order" mode, but "order" mode can display your output accoring to the order of input gene(s), default: fast               |
+| out (optional)  | output file, defaut: output.fa                                                                                                                                     |
+| show (optional) | whether display output on the screen or not, defaut: false                                                                                                         |
 
-e.g. `python -m seqits.search input.fa Gene1,Gene2,Gene3 --out output.fa`
+e.g. 
+`python -m seqits.search input.fa Gene1,Gene2,Gene3 --out output.fa`
+`python -m seqits.search input.fa Gene.txt -t file`
 
 #### formatseq
 
-This tool can make format the fasta file.
+This tool can format the fasta file.
 
 | Arguments       | Description                                                |
 | --------------- |:----------------------------------------------------------:|
@@ -52,6 +55,19 @@ This tool can make format the fasta file.
 | out (optional)  | output file, defaut: output.fa                             |
 | show (optional) | whether display output on the screen or not, defaut: false |
 
-e.g. `python -m seqits.formatseq input.fa 100`
+e.g. 
+`python -m seqits.formatseq input.fa 100`
+
+#### retest
+
+This tool can test the regulate expression.
+
+| Arguments | Description         |
+| --------- |:-------------------:|
+| input     | input file          |
+| re        | regulate expression |
+
+e.g. 
+`python -m seqits.retest input.fa ">(Gene\d{1,3})"`
 
 

@@ -1,8 +1,8 @@
-seqits_version='0.0.1'
-seqits_search_version='0.0.1'
+seqits_version='0.0.2'
+seqits_search_version='0.0.2'
 seqits_randseq_version='0.0.1'
 seqits_formatseq_version='0.0.1'
-
+seqits_retest_version='0.0.1'
 def package_list():
     s=''
     for i in globals().items():

@@ -1,7 +1,7 @@
 import argparse
 from colorama import Fore,init
 from seqits import seqits_formatseq_version
-
+import os
 init(autoreset=True)
 def get_help(prog):
     return argparse.HelpFormatter('seqits.formatseq')
@@ -26,8 +26,12 @@ parser.add_argument('-v', '--version', action='version',
 args = parser.parse_args()
 filename=args.input
 print('Waiting for formatting ...')
-with open(filename) as f:
-    file=f.read()
+if os.path.isfile(filename):
+    with open(filename) as f:
+        file=f.read()
+else:
+    print(Fore.RED+'Cannot find the input file!')
+    exit(0)
 remove_list=['\r','\t',' ','\n','\b']
 s=''
 for i in file.split('>')[1:]:
